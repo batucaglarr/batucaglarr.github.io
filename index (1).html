@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinan Batu Caglar — Security Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F1EC; --ink:#111418; --soft:#585F68;
+    --orange:#FF4D00; --rule:rgba(17,20,24,.16); --rule-hard:#111418;
+    --anton:'Anton',sans-serif; --arch:'Archivo',sans-serif; --mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--arch);font-size:16px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+  ::selection{background:var(--orange);color:#fff}
+
+  /* ---- jumbotron ticker ---- */
+  .ticker{background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;
+    border-bottom:3px solid var(--orange)}
+  .ticker-track{display:inline-block;padding:9px 0;font-family:var(--mono);font-size:12.5px;
+    letter-spacing:.14em;animation:tick 28s linear infinite}
+  .ticker b{color:var(--orange);font-weight:500}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+  .page{max-width:1060px;margin:0 auto;padding:0 28px}
+
+  /* ---- hero ---- */
+  header{padding:64px 0 0}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--soft);text-transform:uppercase}
+  h1{font-family:var(--anton);font-size:clamp(64px,11vw,132px);line-height:.92;text-transform:uppercase;
+    letter-spacing:.005em;margin:14px 0 0}
+  h1 .last{color:transparent;-webkit-text-stroke:2px var(--ink)}
+  .hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:end;
+    border-bottom:3px solid var(--rule-hard);padding:34px 0 40px}
+  .hero-copy{font-size:19px;max-width:520px}
+  .hero-copy em{font-style:normal;background:linear-gradient(transparent 62%, rgba(255,77,0,.35) 62%)}
+  .facts{font-family:var(--mono);font-size:13px}
+  .facts div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid var(--rule)}
+  .facts div:first-child{border-top:none}
+  .facts .k{color:var(--soft);letter-spacing:.08em}
+  .facts a{border-bottom:1px solid var(--orange)}
+  .facts .live{color:var(--orange);font-weight:500}
+
+  /* ---- sections ---- */
+  section{padding:58px 0 8px}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+    border-bottom:3px solid var(--rule-hard);padding-bottom:12px;margin-bottom:0}
+  .sec-head h2{font-family:var(--anton);font-size:clamp(26px,4vw,40px);text-transform:uppercase;letter-spacing:.01em}
+  .sec-head .note{font-family:var(--mono);font-size:11.5px;color:var(--soft);letter-spacing:.14em;text-transform:uppercase}
+
+  /* career record rows */
+  .row{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:30px 0;border-bottom:1px solid var(--rule)}
+  .row:last-child{border-bottom:none}
+  .yr{font-family:var(--anton);font-size:30px;line-height:1.05;color:var(--ink)}
+  .yr small{display:block;font-family:var(--mono);font-size:11px;color:var(--soft);margin-top:6px;letter-spacing:.1em}
+  .row h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .row .org{font-family:var(--mono);font-size:12.5px;color:var(--orange);letter-spacing:.06em;
+    text-transform:uppercase;margin:3px 0 10px}
+  .row p{color:var(--soft);font-size:15px;max-width:640px;margin-bottom:6px}
+
+  /* project file */
+  .proj{padding:26px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:10px 30px;align-items:baseline}
+  .proj:last-child{border-bottom:none}
+  .proj h3{font-size:18px;font-weight:700}
+  .proj h3 .flag{font-family:var(--mono);font-size:10.5px;color:#fff;background:var(--orange);
+    padding:3px 8px;letter-spacing:.14em;vertical-align:3px;margin-left:10px;text-transform:uppercase}
+  .proj p{grid-column:1;color:var(--soft);font-size:15px;max-width:620px;margin-top:4px}
+  .proj .stack{font-family:var(--mono);font-size:11.5px;color:var(--soft);letter-spacing:.06em;text-align:right;text-transform:uppercase}
+  .proj.feature{background:var(--ink);color:var(--paper);margin:0 -28px;padding:32px 28px}
+  .proj.feature p{color:rgba(241,241,236,.72)}
+  .proj.feature .stack{color:rgba(241,241,236,.6)}
+
+  /* skills — typographic, no chips */
+  .skills{padding:8px 0 0}
+  .skl{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .skl:last-child{border-bottom:none}
+  .skl .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--soft);text-transform:uppercase;padding-top:5px}
+  .skl .v{font-size:17px;font-weight:500;line-height:1.75}
+  .skl .v i{font-style:normal;color:var(--orange);padding:0 10px;font-weight:400}
+
+  /* footer */
+  footer{margin-top:70px;background:var(--ink);color:var(--paper)}
+  .foot-in{max-width:1060px;margin:0 auto;padding:60px 28px 46px}
+  .cta{font-family:var(--anton);font-size:clamp(44px,8vw,92px);text-transform:uppercase;line-height:.95;display:inline-block}
+  .cta a{border-bottom:5px solid var(--orange)}
+  .cta a:hover{color:var(--orange)}
+  .foot-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:44px;
+    font-family:var(--mono);font-size:12px;color:rgba(241,241,236,.55);letter-spacing:.1em}
+  .foot-meta a{border-bottom:1px solid var(--orange);color:var(--paper)}
+
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .row,.skl{grid-template-columns:1fr;gap:8px}
+    .yr{font-size:24px}
+    .proj{grid-template-columns:1fr}
+    .proj .stack{text-align:left;margin-top:8px}
+    .proj.feature{margin:0 -28px}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    OPEN TO WORK <b>▮</b> JR SECURITY ENGINEER / SOC ANALYST <b>▮</b> WARSAW · EU <b>▮</b> SECURITY+ IN PROGRESS <b>▮</b> M.SC. CYBERSECURITY ’26 <b>▮</b>&nbsp;
+    OPEN TO WORK <b>▮</b> JR SECURITY ENGINEER / SOC ANALYST <b>▮</b> WARSAW · EU <b>▮</b> SECURITY+ IN PROGRESS <b>▮</b> M.SC. CYBERSECURITY ’26 <b>▮</b>&nbsp;
+  </div>
+</div>
+
+<div class="page">
+  <header>
+    <div class="kicker">Scouting report · No. 26-001</div>
+    <h1>Sinan Batu<br><span class="last">Caglar</span></h1>
+    <div class="hero-grid">
+      <p class="hero-copy">Cybersecurity M.Sc. student in Warsaw moving into <em>junior security engineering</em>. Former pro athlete — same habit, different court: read the play, find the gap, close it.</p>
+      <div class="facts" role="list">
+        <div><span class="k">POSITION</span><span>Security Analyst</span></div>
+        <div><span class="k">LOCATION</span><span>Warsaw, PL</span></div>
+        <div><span class="k">STATUS</span><span class="live">● Open to work</span></div>
+        <div><span class="k">MAIL</span><a href="mailto:batucaglar9@gmail.com">batucaglar9@gmail.com</a></div>
+        <div><span class="k">PHONE</span><a href="tel:+48572200781">+48 572 200 781</a></div>
+        <div><span class="k">GITHUB</span><a href="https://github.com/batucaglarr" target="_blank" rel="noopener">batucaglarr</a></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="career">
+    <div class="sec-head">
+      <h2>Career Record</h2>
+      <span class="note">2021 — present</span>
+    </div>
+    <div class="row">
+      <div class="yr">2025<small>JUN — AUG</small></div>
+      <div>
+        <h3>Cybersecurity Intern</h3>
+        <div class="org">Posting Boost</div>
+        <p>Reviewed user access flows and permission structures for a SaaS platform, identifying gaps in role assignment and access boundaries.</p>
+        <p>Documented authentication logic and user management with the dev team — least-privilege and secure data handling in a live product.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="yr">2024<small>JUN — DEC</small></div>
+      <div>
+        <h3>UI/UX Designer — Security-Aware Projects</h3>
+        <div class="org">Deka Technology · Istanbul</div>
+        <p>Designed authentication and access-control flows for the mobile app of one of Turkey's largest retail chains.</p>
+        <p>Dutch government health-monitoring project — data sensitivity, GDPR, privacy-by-design.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="yr">2024+<small>ONGOING</small></div>
+      <div>
+        <h3>AI &amp; Automation Projects</h3>
+        <div class="org">Self-initiated</div>
+        <p>LLM-based agents for summarization and data categorization; n8n pipelines with conditional logic and REST API integration.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="yr">2021<small>MAY — JUN ’23</small></div>
+      <div>
+        <h3>Data / Content Analyst</h3>
+        <div class="org">ByteDance</div>
+        <p>Analysed large-scale content and behavioural datasets for patterns, anomalies and trends across platform activity.</p>
+        <p>Structured reports and dashboards; data pipelines under strict data-handling standards.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head">
+      <h2>Project File</h2>
+      <span class="note">Built, not just studied</span>
+    </div>
+    <div class="proj feature">
+      <h3>CyberSim — Threat Intelligence Dashboard<span class="flag">Featured</span></h3>
+      <div class="stack">Python / FastAPI · React · NVD API · MITRE ATT&amp;CK ICS</div>
+      <p>Full-stack platform pulling live CVE feeds from the NVD API and mapping them against MITRE ATT&amp;CK for ICS. Custom composite risk-scoring algorithm prioritises vulnerabilities for critical-infrastructure scenarios. M.Sc. engineering project.</p>
+    </div>
+    <div class="proj">
+      <h3>Mouye</h3>
+      <div class="stack">React Native / Expo</div>
+      <p>Strava-style dog-walking tracker — route recording and activity history.</p>
+    </div>
+    <div class="proj">
+      <h3>Mój Prawnik</h3>
+      <div class="stack">React Native / Expo</div>
+      <p>Lawyer discovery app for the Polish market.</p>
+    </div>
+    <div class="proj">
+      <h3>Röstminne</h3>
+      <div class="stack">React Native · Speech-to-text</div>
+      <p>AI-powered voice note app with transcription.</p>
+    </div>
+    <div class="proj">
+      <h3>DaruratAI</h3>
+      <div class="stack">React Native · Offline maps</div>
+      <p>Health-facility locator for travellers — works online and offline.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <h2>Stat Sheet</h2>
+      <span class="note">Tools &amp; disciplines</span>
+    </div>
+    <div class="skills">
+      <div class="skl"><div class="k">Security</div>
+        <div class="v">Network Security<i>/</i>Vulnerability Assessment<i>/</i>IAM<i>/</i>Log Analysis<i>/</i>SIEM Fundamentals<i>/</i>MITRE ATT&amp;CK<i>/</i>CVE · NVD<i>/</i>Wireshark<i>/</i>Nmap<i>/</i>Linux CLI</div></div>
+      <div class="skl"><div class="k">Code &amp; Data</div>
+        <div class="v">Python (FastAPI)<i>/</i>SQL<i>/</i>REST APIs<i>/</i>Large-scale Data Analysis<i>/</i>Dashboards</div></div>
+      <div class="skl"><div class="k">AI &amp; Automation</div>
+        <div class="v">LLM Agent Systems<i>/</i>n8n<i>/</i>Prompt Engineering</div></div>
+      <div class="skl"><div class="k">Education</div>
+        <div class="v">M.Sc. Cybersecurity — VIZJA Warsaw ’26<i>/</i>B.A. Visual Communication &amp; Design — Yasar ’23</div></div>
+      <div class="skl"><div class="k">Certs</div>
+        <div class="v">CompTIA Security+ (in progress)<i>/</i>Google Cybersecurity Certificate<i>/</i>TryHackMe — active</div></div>
+      <div class="skl"><div class="k">Languages</div>
+        <div class="v">Turkish — native<i>/</i>English — proficient<i>/</i>Polish — basic</div></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <div class="cta"><a href="mailto:batucaglar9@gmail.com">Let’s talk →</a></div>
+    <div class="foot-meta">
+      <span>FORMERLY: PRO BASKETBALL — TR &amp; US LEAGUES</span>
+      <span><a href="https://github.com/batucaglarr" target="_blank" rel="noopener">GITHUB</a>&nbsp;&nbsp;·&nbsp;&nbsp;WARSAW · 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
